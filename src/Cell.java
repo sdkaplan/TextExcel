@@ -4,10 +4,10 @@
 public class Cell {
     private String contents;
 
-    public Cell () {
+    public Cell() {
         contents = "            ";
     }
-//sfdf
+
     public String toString() {
         return contents;
     }

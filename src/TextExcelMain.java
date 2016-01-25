@@ -10,38 +10,25 @@ public class TextExcelMain {
 
         System.out.println("Welcome to TextExcel!");
         System.out.println();
-        System.out.println("Enter a command: ");
-        System.out.println();
 
-        //String command = input.nextLine();
+        Boolean running = true;
+        while(running == true) {
+            System.out.println("Enter a command: ");
 
-        spreadsheet.printSpreadsheet();
-
-        //String ABC = ("            |     A      |     B      |     C      |     D      |     E      |     F      |     G      |");
-        //String betweenColumns = ("------------+------------+------------+------------+------------+------------+------------+------------+");
-        /*
-        Cell[][] cellArray = new Cell[7][10]; //creates a new 2d array of cells
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 7; j++) {
-                cellArray[j][i] = new Cell(); //puts an empty cell in each cell
-            }
-        }
-
-        /*System.out.println(ABC);
-        System.out.println(betweenColumns);
-        for (int i = 0; i < 10; i++) {
-            if (i < 9) {
-                System.out.print("     " + (i + 1) + "      |");
-            } else {
-                System.out.print("     " + (i + 1) + "     |");
-            }
-
-            for (int j = 0; j < 7; j++) {
-                System.out.print(cellArray[j][i]);
-                System.out.print("|");
-            }
+            String command = input.nextLine();
             System.out.println();
-            System.out.println(betweenColumns);
-        } */
+
+            if (command.equals("print")) {
+                spreadsheet.printSpreadsheet();
+            } else if (command.equals("exit")) {
+                running = false;
+            } else if (command.contains("clear")) {
+                //clear range
+            }
+            //else if cell contains a cell name
+            //else if cell contains cell name = something
+            //else if cell contains sorta
+            //else if cell contains sortb
+        }
     }
 }
