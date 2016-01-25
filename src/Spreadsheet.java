@@ -31,7 +31,7 @@ public class Spreadsheet {
             }
 
             for (int j = 0; j < ROWS; j++) {
-                System.out.print(cellArray[j][i]);
+                System.out.print(cellArray[j][i].toStringinSpreadsheet());
                 System.out.print("|");
             }
             System.out.println();
@@ -41,5 +41,18 @@ public class Spreadsheet {
 
     public void exit() {
         //do I need this method?
+    }
+
+    public String getCellValue(String cellName){
+        String letter = cellName.substring(0, 1);
+        int letterInt = convertToNumber(letter);
+        int number = Integer.parseInt(cellName);
+
+
+        return "nothing yet";
+    }
+
+    private int convertToNumber(String letter){
+        return 0;
     }
 }

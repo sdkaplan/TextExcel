@@ -9,10 +9,10 @@ public class TextExcelMain {
         Spreadsheet spreadsheet = new Spreadsheet();
 
         System.out.println("Welcome to TextExcel!");
-        System.out.println();
 
         Boolean running = true;
         while(running == true) {
+            System.out.println();
             System.out.println("Enter a command: ");
 
             String command = input.nextLine();
@@ -21,6 +21,7 @@ public class TextExcelMain {
             if (command.equals("print")) {
                 spreadsheet.printSpreadsheet();
             } else if (command.equals("exit")) {
+                System.out.println("GoodBye!");
                 running = false;
             } else if (command.contains("clear")) {
                 //clear range
