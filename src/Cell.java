@@ -4,12 +4,19 @@
 public class Cell {
     private String contents;
 
+    /*
+     * Creates a new cell and sets its contents to empty
+     */
     public Cell() {
         contents = "empty";
     }
 
-    //used when printing in the spreadsheet. It will prepare the files to have the right
-    //number of spaces, and if the cell is empty it will print spaces instead of empty
+    /*
+    * Prepares the stored values for spreadsheet printing.
+    * if cell is empty will return spaces
+    * adds or removes the correct number of spaces so that the cell is 12 characters wide
+    * @return: the 12 character string for printing the spreadsheet
+    */
     public String toStringinSpreadsheet() {
         String returnValue = this.contents;
         if (contents.equals("empty")){
@@ -17,7 +24,10 @@ public class Cell {
         }
         return returnValue;
     }
-    //regular ol' toString method, can be used when directly giving the user the value of a cell
+    /*
+     * Converts the cell to a string.
+     * @return: the contents of the cell
+     */
     public String toString() {
         return contents;
     }

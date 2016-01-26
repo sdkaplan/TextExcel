@@ -6,6 +6,9 @@ public class Spreadsheet {
     final int ROWS = 7;
     final int COLUMNS = 10;
 
+    /*
+     *Creates a new 2d Array of cells and sets each cell to be empty
+     */
     public Spreadsheet() {
         Cell[][] cellArray = new Cell[ROWS][COLUMNS]; //creates a new 2d array of cells
         for (int i = 0; i < COLUMNS; i++) {
@@ -16,6 +19,9 @@ public class Spreadsheet {
         this.cellArray = cellArray;
     }
 
+    /*
+     * Prints the spreadsheet with the correct number of spaces
+     */
     public void printSpreadsheet() {
 
         String ABC = ("            |     A      |     B      |     C      |     D      |     E      |     F      |     G      |");
@@ -39,20 +45,42 @@ public class Spreadsheet {
         }
     }
 
-    public void exit() {
-        //do I need this method?
-    }
-
+    /*
+     * Takes a cell name and converts it to be the correct number for the array
+     * @param: the cell name
+     * @return: the cell name = the value of the cell
+     */
     public String getCellValue(String cellName){
-        String letter = cellName.substring(0, 1);
-        int letterInt = convertToNumber(letter);
-        int number = Integer.parseInt(cellName);
-
-
-        return "nothing yet";
+        String letter = cellName.substring(0, 1); //The letter is the first thing in cellName
+        int letterInt = convertToNumber(letter); //converts the letter to an int
+        String numberString = cellName.substring(1, cellName.length()); //The int is the last part of the cellName
+        int number = Integer.parseInt(numberString); //Changes the String int into an int int
+        return (cellName + " = " + cellArray[letterInt][number]); //gets the value of teh cellArray
     }
 
+    /*
+     * Converts the letter to a number corresponding with the array
+     * @param: the letter to be converted
+     * @return: the corresponding number to that letter, 9 if the letter is not in the spreadsheet
+     */
     private int convertToNumber(String letter){
-        return 0;
+        if (letter.equals("A")){
+            return 0;
+        } else if (letter.equals("B")) {
+            return 1;
+        } else if (letter.equals("C")){
+            return 2;
+        } else if (letter.equals("D")) {
+            return 3;
+        } else if (letter.equals("E")) {
+            return 4;
+        } else if (letter.equals("F")) {
+            return 5;
+        } else if (letter.equals("G")) {
+            return 6;
+        }
+
+
+        return 9; //return 9 if the number is not in the spreadsheet, so that an error will occur in the array
     }
 }

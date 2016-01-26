@@ -25,8 +25,9 @@ public class TextExcelMain {
                 running = false;
             } else if (command.contains("clear")) {
                 //clear range
+            } else { //cell contains a cell name
+                System.out.println(spreadsheet.getCellValue(command));
             }
-            //else if cell contains a cell name
             //else if cell contains cell name = something
             //else if cell contains sorta
             //else if cell contains sortb
