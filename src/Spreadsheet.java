@@ -51,10 +51,12 @@ public class Spreadsheet {
      * @return: the cell name = the value of the cell
      */
     public String getCellValue(String cellName){
+        //should these next 4 lines be in a method?
         String letter = cellName.substring(0, 1); //The letter is the first thing in cellName
         int letterInt = convertToNumber(letter); //converts the letter to an int
         String numberString = cellName.substring(1, cellName.length()); //The int is the last part of the cellName
         int number = Integer.parseInt(numberString); //Changes the String int into an int int
+
         return (cellName + " = " + cellArray[letterInt][number]); //gets the value of teh cellArray
     }
 
@@ -82,5 +84,13 @@ public class Spreadsheet {
 
 
         return 9; //return 9 if the number is not in the spreadsheet, so that an error will occur in the array
+    }
+
+    public void setContents(String cellName, String stringContents) {
+        String letter = cellName.substring(0, 1); //The letter is the first thing in cellName
+        int letterInt = convertToNumber(letter); //converts the letter to an int
+        String numberString = cellName.substring(1, cellName.length()); //The int is the last part of the cellName
+        int number = Integer.parseInt(numberString); //Changes the String int into an int int
+        cellArray[letterInt][number - 1] = new Cell(stringContents);
     }
 }

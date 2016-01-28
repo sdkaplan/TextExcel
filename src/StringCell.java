@@ -4,6 +4,6 @@
 public class StringCell extends Cell {
 
     public StringCell(){
-f
+        super();
     }
 }

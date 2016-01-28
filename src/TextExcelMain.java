@@ -31,18 +31,23 @@ public class TextExcelMain {
 
                 if (command.indexOf("\"") != -1) { //its a String
                     String settingValue = command.substring(command.indexOf("\"") + 1, command.lastIndexOf("\""));
-                    System.out.println(settingValue);
+                    spreadsheet.setContents(cellName, settingValue);
+
                 } else if (command.indexOf("(") != -1) { //if its a formula
                     String settingValue = command.substring(command.indexOf("(") + 1, command.lastIndexOf(")"));
-                    System.out.println(settingValue);
+
                 } else { //its a double
                     String settingValue = command.substring(command.indexOf("=") + 1, command.length());
                     Double settingValueDouble = Double.parseDouble(settingValue);
-                    System.out.println(settingValueDouble);
+
                 }
+
             } else { //cell contains a cell name
                 System.out.println(spreadsheet.getCellValue(command));
+
             }
+
+
             //else if command contains sorta
             //else if command contains sortb
         }
