@@ -26,22 +26,32 @@ public class Cell {
         String returnValue = this.contents;
         if (contents.equals("empty")){
             returnValue = "            ";
+        } else if (contents.length() < LENGTH) {
+            int spaces = (LENGTH - contents.length()) / 2; //gets the number of spaces to be on the left side of contents
+            returnValue = ""; //creates an empty string
+
+            for (int i = 0; i < spaces; i++) {
+                returnValue += " "; //adds the correct number of spaces on the left side
+            }
+            returnValue += contents; //adds contents
+            if (contents.length() % 2 == 1){ //if the legnth of contents is odd
+                spaces += 1; //add an extra space on the right
+            }
+            for (int i = 0; i < spaces; i++) {
+                returnValue += " "; //adds the right side spaces
+            }
+        } else if (contents.length() > LENGTH) {
+            returnValue = returnValue.substring(0, LENGTH - 1) + "<"; //shortens contents to be 11 char long with a <
         }
-        if (contents.length() < LENGTH) {
-            //get the length
-            //LENGTH - length
-        }
+
         return returnValue;
     }
+
     /*
      * Converts the cell to a string.
      * @return: the contents of the cell
      */
     public String toString() {
         return contents;
-    }
-
-    public void setContentsOfCell(String contents) {
-
     }
 }
