@@ -3,7 +3,7 @@
  */
 public class StringCell extends Cell {
 
-    public StringCell(){
-        super();
+    public StringCell(String contents){
+        super(contents);
     }
 }

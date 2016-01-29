@@ -65,7 +65,8 @@ public class Spreadsheet {
      * @param: the letter to be converted
      * @return: the corresponding number to that letter, 9 if the letter is not in the spreadsheet
      */
-    private int convertToNumber(String letter){
+    private int convertToNumber(String cellName){
+        String letter = cellName.substring(0, 1); //The letter is the first thing in cellName
         if (letter.equals("A")){
             return 0;
         } else if (letter.equals("B")) {
@@ -87,11 +88,13 @@ public class Spreadsheet {
     }
 
     public void setContents(String cellName, String stringContents) {
-        String letter = cellName.substring(0, 1); //The letter is the first thing in cellName
-        int letterInt = convertToNumber(letter); //converts the letter to an int
+        //String letter = cellName.substring(0, 1); //The letter is the first thing in cellName
+        //int letterInt = convertToNumber(letter); //converts the letter to an int
+        int letterInt = convertToNumber(cellName);
         String numberString = cellName.substring(1, cellName.length()); //The int is the last part of the cellName
         int number = Integer.parseInt(numberString); //Changes the String int into an int int
-        cellArray[letterInt][number - 1] = new Cell(stringContents);
+
+        cellArray[letterInt][number - 1] = new StringCell(stringContents);
     }
 
     public void clearContents(String cellName) {
