@@ -13,14 +13,14 @@ public class Spreadsheet {
         Cell[][] cellArray = new Cell[ROWS][COLUMNS]; //creates a new 2d array of cells
         for (int i = 0; i < COLUMNS; i++) {
             for (int j = 0; j < ROWS; j++) {
-                cellArray[j][i] = new Cell("dog"); //puts an empty cell in each cell
+                cellArray[j][i] = new Cell("empty"); //puts an empty cell in each cell
             }
         }
         this.cellArray = cellArray;
     }
 
     /*
-     * Prints the spreadsheet with the correct number of spaces
+     * Prints the spreadsheet with the  correct number of spaces
      */
     public void printSpreadsheet() {
 
@@ -57,7 +57,9 @@ public class Spreadsheet {
         String numberString = cellName.substring(1, cellName.length()); //The int is the last part of the cellName
         int number = Integer.parseInt(numberString); //Changes the String int into an int int
 
-        return (cellName + " = " + cellArray[letterInt][number]); //gets the value of teh cellArray
+        System.out.println(letterInt);
+        System.out.println(number);
+        return (cellName + " = " + cellArray[letterInt][number]); //gets the value of the cellArray
     }
 
     /*
@@ -88,8 +90,6 @@ public class Spreadsheet {
     }
 
     public void setContents(String cellName, String stringContents) {
-        //String letter = cellName.substring(0, 1); //The letter is the first thing in cellName
-        //int letterInt = convertToNumber(letter); //converts the letter to an int
         int letterInt = convertToNumber(cellName);
         String numberString = cellName.substring(1, cellName.length()); //The int is the last part of the cellName
         int number = Integer.parseInt(numberString); //Changes the String int into an int int
@@ -131,25 +131,12 @@ public class Spreadsheet {
         }
     }
 
-    public void clearAll() { //THIS HAS NOT BEEN TESTED
-        String ABC = ("            |     A      |     B      |     C      |     D      |     E      |     F      |     G      |");
-        String betweenColumns = ("------------+------------+------------+------------+------------+------------+------------+------------+");
-
-        System.out.println(ABC);
-        System.out.println(betweenColumns);
+    public void clearAll() {
         for (int i = 0; i < COLUMNS; i++) {
-            if (i < 9) {
-                System.out.print("     " + (i + 1) + "      |");
-            } else {
-                System.out.print("     " + (i + 1) + "     |");
-            }
-
             for (int j = 0; j < ROWS; j++) {
-                System.out.print(cellArray[j][i].toStringinSpreadsheet());
-                System.out.print("|");
+                cellArray[j][i] = new Cell("empty"); //puts an empty cell in each cell
             }
-            System.out.println();
-            System.out.println(betweenColumns);
         }
+        this.cellArray = cellArray;
     }
 }
