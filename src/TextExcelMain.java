@@ -34,29 +34,26 @@ public class TextExcelMain {
                     String cellName = command.substring(command.indexOf(" ") + 1, command.length());
                     spreadsheet.clearContents(cellName);
                 }
-            } else if (command.contains("=")){
+            } else if (command.contains("=")){ //if command is setting the value
                 //cell name is the characters before the = (not including the space)
                 String cellName = command.substring(0, command.indexOf(" "));
 
-                if (command.indexOf("\"") != -1) { //its a String
+                if (command.indexOf("\"") != -1) { //it is a String
                     String settingValue = command.substring(command.indexOf("\"") + 1, command.lastIndexOf("\""));
                     spreadsheet.setContents(cellName, settingValue);
 
-                } else if (command.indexOf("(") != -1) { //if its a formula
+                } else if (command.indexOf("(") != -1) { //if it is a formula
                     String settingValue = command.substring(command.indexOf("(") + 1, command.lastIndexOf(")"));
-
-                } else { //its a double
+                    spreadsheet.setContents(cellName, settingValue);
+                } else { //it is a double
                     String settingValue = command.substring(command.indexOf("=") + 1, command.length());
-                    Double settingValueDouble = Double.parseDouble(settingValue);
-
+                    spreadsheet.setContents(cellName, settingValue);
+                    //Double settingValueDouble = Double.parseDouble(settingValue);
                 }
-
-            } else { //cell contains a cell name
+            } else { //cell contains a cell name, will return the contents of the cell
                 System.out.println(spreadsheet.getCellValue(command));
 
             }
-
-
             //else if command contains sorta
             //else if command contains sortb
         }

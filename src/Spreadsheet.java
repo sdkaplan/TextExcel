@@ -51,15 +51,12 @@ public class Spreadsheet {
      * @return: the cell name = the value of the cell
      */
     public String getCellValue(String cellName){
-        //should these next 4 lines be in a method?
         String letter = cellName.substring(0, 1); //The letter is the first thing in cellName
         int letterInt = convertToNumber(letter); //converts the letter to an int
         String numberString = cellName.substring(1, cellName.length()); //The int is the last part of the cellName
-        int number = Integer.parseInt(numberString); //Changes the String int into an int int
+        int number = Integer.parseInt(numberString) - 1; //Changes the String int into an int int
 
-        System.out.println(letterInt);
-        System.out.println(number);
-        return (cellName + " = " + cellArray[letterInt][number]); //gets the value of the cellArray
+        return (cellName + " = " + "\"" + cellArray[letterInt][number]) + "\""; //gets the value of the cellArray
     }
 
     /*
