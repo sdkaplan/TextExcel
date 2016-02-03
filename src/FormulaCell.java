@@ -1,15 +1,15 @@
 /**
- * Created by bal_Sdkaplan on 1/27/2016.
+ * Created by bal_SDkaplan on 2/3/2016.
  */
-public class DoubleCell extends Cell {
-    private double contents;
+public class FormulaCell extends Cell{
+    private String contents;
 
     /*
      * Creates a new cell and sets it contents to something
      */
-    public DoubleCell(String contents) {
+    public FormulaCell(String contents) {
         super(contents);
-        this.contents = Double.parseDouble(contents);
+        this.contents = contents;
     }
 
     /*

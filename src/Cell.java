@@ -12,6 +12,9 @@ public class Cell {
         contents = "empty";
     }
 
+    /*
+     * Creates a new cell and sets its contents to something
+     */
     public Cell(String contents) {
         this.contents = contents;
     }

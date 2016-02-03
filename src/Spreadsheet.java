@@ -7,7 +7,7 @@ public class Spreadsheet {
     final int COLUMNS = 10;
 
     /*
-     *Creates a new 2d Array of cells and sets each cell to be empty
+     * Creates a new 2d Array of cells and sets each cell to be empty
      */
     public Spreadsheet() {
         Cell[][] cellArray = new Cell[ROWS][COLUMNS]; //creates a new 2d array of cells
@@ -43,6 +43,7 @@ public class Spreadsheet {
             System.out.println();
             System.out.println(betweenColumns);
         }
+        System.out.println();
     }
 
     /*
@@ -56,7 +57,8 @@ public class Spreadsheet {
         String numberString = cellName.substring(1, cellName.length()); //The int is the last part of the cellName
         int number = Integer.parseInt(numberString) - 1; //Changes the String int into an int int
 
-        return (cellName + " = " + "\"" + cellArray[letterInt][number]) + "\""; //gets the value of the cellArray
+        return (cellArray[letterInt][number].toString()); //gets the value of the cellArray
+
     }
 
     /*
@@ -86,14 +88,34 @@ public class Spreadsheet {
         return 9; //return 9 if the number is not in the spreadsheet, so that an error will occur in the array
     }
 
-    public void setContents(String cellName, String stringContents) {
+    /*
+     * Sets the contents of a cell
+     * @param: the cell name, the contents of the cell
+     */
+    public void setContents(String cellName, String contents) {
         int letterInt = convertToNumber(cellName);
         String numberString = cellName.substring(1, cellName.length()); //The int is the last part of the cellName
         int number = Integer.parseInt(numberString); //Changes the String int into an int int
 
-        cellArray[letterInt][number - 1] = new StringCell(stringContents);
+        if (contents.indexOf("\"") != -1) { //it is a String
+            String settingValue = contents.substring(contents.indexOf("\"") + 1, contents.lastIndexOf("\""));
+            cellArray[letterInt][number - 1] = new StringCell(settingValue); //create a new StringCell
+
+        } else if (contents.indexOf("(") != -1) { //if it is a formula
+            String settingValue = contents.substring(contents.indexOf("(") + 1, contents.lastIndexOf(")"));
+            cellArray[letterInt][number - 1] = new FormulaCell(settingValue); //create a new FormulaCell
+
+        } else if (Double.parseDouble(contents) != -1){ //it is a double
+            String settingValue = contents.substring(contents.indexOf("=") + 1, contents.length());
+            cellArray[letterInt][number - 1] = new DoubleCell(settingValue); //create a new DoubleCell
+
+        }
     }
 
+    /*
+     * Clears the contents of a cell
+     * @param: The name of the cell to be cleared
+     */
     public void clearContents(String cellName) {
         String letter = cellName.substring(0, 1); //The letter is the first thing in cellName
         int letterInt = convertToNumber(letter); //converts the letter to an int
@@ -103,6 +125,10 @@ public class Spreadsheet {
         cellArray[letterInt][number - 1] = new Cell();
     }
 
+    /*
+     * Clears the contents pf a range of cells
+     * @param: the first cell in the range, the second cell in the range
+     */
     public void clearContents(String firstCell, String secondCell) {
         String letter = firstCell.substring(0, 1); //The letter is the first thing in cellName
         int letterInt = convertToNumber(letter); //converts the letter to an int
@@ -120,7 +146,7 @@ public class Spreadsheet {
 
 
 
-        //clear the array in the indicated ranges THIS DOESN'T WORK YET WORK ON THIS AT SOMEPOINT
+        //clear the array in the indicated ranges THIS DOESN'T WORK YET WORK ON THIS AT SOME POINT
         for (int i = letterInt; i < letterInt2; i++) {
             for (int j = number; j < number2; j++) {
                 cellArray[i][j] = new Cell();
@@ -128,12 +154,14 @@ public class Spreadsheet {
         }
     }
 
+    /*
+     * Clears the contents of the entire spreadsheet
+     */
     public void clearAll() {
         for (int i = 0; i < COLUMNS; i++) {
             for (int j = 0; j < ROWS; j++) {
                 cellArray[j][i] = new Cell("empty"); //puts an empty cell in each cell
             }
         }
-        this.cellArray = cellArray;
     }
 }
