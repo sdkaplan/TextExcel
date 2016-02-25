@@ -37,7 +37,7 @@ public class Spreadsheet {
             }
 
             for (int j = 0; j < ROWS; j++) {
-                System.out.print(cellArray[j][i].toStringinSpreadsheet());
+                System.out.print(cellArray[j][i].toStringInSpreadsheet());
                 System.out.print("|");
             }
             System.out.println();

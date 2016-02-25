@@ -25,7 +25,7 @@ public class Cell {
     * adds or removes the correct number of spaces so that the cell is 12 characters wide
     * @return: the 12 character string for printing the spreadsheet
     */
-    public String toStringinSpreadsheet() {
+    public String toStringInSpreadsheet() {
         String returnValue = this.contents;
         if (contents.equals("empty")){
             returnValue = "            ";

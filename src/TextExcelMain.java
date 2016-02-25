@@ -13,6 +13,9 @@ public class TextExcelMain {
 
         Boolean running = true;
 
+        System.out.println("testing formula cell");
+        FormulaCell test = new FormulaCell("2 + 3 + 4 + 5");
+        test.formulate();
         while(running == true) {
             System.out.print("Enter a command: ");
 
